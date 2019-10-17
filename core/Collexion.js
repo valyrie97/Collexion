@@ -28,13 +28,16 @@ class Collexion {
 					await inst.start()
 			}
 
+			// add links to each object
 			for(const symbol in instances) {
 				const inst = instances[symbol];
+				inst._links = {};
 				for(const symbol in instances) {
-					inst[symbol] = instances[symbol];
+					inst._links[symbol] = instances[symbol];
 				}
 			}
 
+			// call connected
 			for(const symbol in instances) {
 				const inst = instances[symbol];
 				if('connected' in inst)

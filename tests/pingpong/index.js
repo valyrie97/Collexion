@@ -7,13 +7,13 @@ const PingPong = require('./pingpong.js')
 			Code: PingPong,
 			Data: {
 				start: true,
-				link: 'B'
+				dest: 'B'
 			}
 		},
 		B: {
 			Code: PingPong,
 			Data: {
-				link: 'A'
+				dest: 'A'
 			}
 		}
 	});
