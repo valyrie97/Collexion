@@ -1,3 +1,7 @@
 language: node_js
 node_js:
-  - 7
+  - "10.16.0"
+os:
+  - windows
+  - linux
+  - osx
