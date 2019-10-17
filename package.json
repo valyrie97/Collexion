@@ -1,0 +1,17 @@
+{
+  "name": "collexion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/pingpong/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "signale": "^1.4.0"
+  }
+}
