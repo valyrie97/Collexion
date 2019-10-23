@@ -6,10 +6,10 @@ of traditionally monolithic code
 
 In monolithic applications, with multiple deeply connected parts, splitting the code is an important step to modularization. However, in many applications, The increased Object orientation causes unecessary overhead. Collexion is meant to alleviate that cost.
 
-- [Examples](#Examples)
-	- [Minimum viable Collexion](#Minimum-viable-Collexion)
-	- [Cross linking](#Cross-linking)
-	- [Instance Parameterization](#Instance-Parameterization)
+- [Examples](#examples)
+	- [Minimum viable Collexion](#minimum-viable-collexion)
+	- [Cross linking](#cross-linking)
+	- [Instance Parameterization](#instance-parameterization)
 
 ## Examples
 

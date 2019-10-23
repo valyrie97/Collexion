@@ -1,15 +1,8 @@
-const {Signale} = require('signale');
-const log = new Signale({
-	scope: 'CORE'
-});
-
 class Collexion {
 	constructor(template) {
 		this.entities = {};
 		(async () => {
 			const instances = {};
-			
-			log.info('Starting Collexion with ' + Object.keys(template) + ' Objects')
 
 			// call constructors on objects, and give them their data
 			for(const symbol in template) {

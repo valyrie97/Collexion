@@ -12,7 +12,5 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "signale": "1.4.0"
-  }
+  "dependencies": {}
 }
