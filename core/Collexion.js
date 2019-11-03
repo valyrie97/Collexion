@@ -4,44 +4,73 @@ class Collexion {
 		(async () => {
 			const instances = {};
 
-			// call constructors on objects, and give them their data
-			for(const symbol in template) {
-				const instTemplate = template[symbol];
-				const _class = instTemplate.Code;
+			this.semaphores = {};
 
-				if(typeof _class === 'function') {}
-				else throw new TypeError('Entity ' + symbol + ' not a class');
 
-				const inst = new _class(this);
-				// guarantee at least an object in _data
-				inst._data = {...instTemplate.Data};
-				instances[symbol] = inst;
-			}
+			// create a hookable promise chain, so that other may wait for
+			// this collexion to complete from the outside
+			this.semaphores.construct = new Promise(async (res) => {
 
-			//call start in each instance.
-			for(const symbol in instances) {
-				const inst = instances[symbol];
-				if('start' in inst)
-					await inst.start()
-			}
+				// call constructors on objects, and give them their data
+				for(const symbol in template) {
+					const instTemplate = template[symbol];
+					const _class = instTemplate.Code;
 
-			// add links to each object
-			for(const symbol in instances) {
-				const inst = instances[symbol];
-				inst._links = {};
-				for(const symbol in instances) {
-					inst._links[symbol] = instances[symbol];
+					if(typeof _class === 'function') {}
+					else throw new TypeError('Entity ' + symbol + ' not a class');
+
+					const inst = new _class(this);
+					// guarantee at least an object in _data
+					inst._data = {...instTemplate.Data};
+					instances[symbol] = inst;
 				}
-			}
+				res();
 
-			// call connected
-			for(const symbol in instances) {
-				const inst = instances[symbol];
-				if('connected' in inst)
-					await inst.connected()
-			}
+			});
+
+			this.semaphores.start = this.semaphores.construct.then(async function() {
+
+				//call start in each instance.
+				for(const symbol in instances) {
+					const inst = instances[symbol];
+					if('start' in inst)
+						await inst.start()
+				}
+			});
+
+			
+
+			this.semaphores.connected = this.semaphores.start.then(async function() {
+
+				// add links to each object
+				for(const symbol in instances) {
+					const inst = instances[symbol];
+					inst._links = {};
+					for(const symbol in instances) {
+						inst._links[symbol] = instances[symbol];
+					}
+				}
+
+				// call connected
+				for(const symbol in instances) {
+					const inst = instances[symbol];
+					if('connected' in inst)
+						await inst.connected()
+				}
+			});
+
 
 		})();
+	}
+
+	get constructSemaphore() {
+		return this.semaphores.construct;
+	}
+	get startSemaphore() {
+		return this.semaphores.start;
+	}
+	get connectedSemaphore() {
+		return this.semaphores.connected;
 	}
 }
 
