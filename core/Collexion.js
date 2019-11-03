@@ -8,6 +8,10 @@ class Collexion {
 			for(const symbol in template) {
 				const instTemplate = template[symbol];
 				const _class = instTemplate.Code;
+
+				if(typeof _class === 'function') {}
+				else throw new TypeError('Entity ' + symbol + ' not a class');
+
 				const inst = new _class(this);
 				// guarantee at least an object in _data
 				inst._data = {...instTemplate.Data};
