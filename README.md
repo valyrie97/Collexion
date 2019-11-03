@@ -3,6 +3,7 @@ of traditionally monolithic code
 
 # Collexion
 [![Build Status](https://travis-ci.org/marcus13345/Collexion.svg?branch=master)](https://travis-ci.org/marcus13345/Collexion)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion?ref=badge_shield)
 
 In monolithic applications, with multiple deeply connected parts, splitting the code is an important step to modularization. However, in many applications, The increased Object orientation causes unecessary overhead. Collexion is meant to alleviate that cost.
 
@@ -139,3 +140,6 @@ One common use case for collexion, is to easily split up a REST API, from the da
 import Collexion from
 
 ```
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion?ref=badge_large)
