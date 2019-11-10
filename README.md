@@ -5,6 +5,8 @@ of traditionally monolithic code
 [![Build Status](https://travis-ci.org/marcus13345/Collexion.svg?branch=master)](https://travis-ci.org/marcus13345/Collexion)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarcus13345%2FCollexion?ref=badge_shield)
 
+[![NPM](https://nodei.co/npm/collexion.png?downloads=true&downloadRank=true)](https://nodei.co/npm/collexion/)
+
 In monolithic applications, with multiple deeply connected parts, splitting the code is an important step to modularization. However, in many applications, The increased Object orientation causes unecessary overhead. Collexion is meant to alleviate that cost.
 
 - [Examples](#examples)
