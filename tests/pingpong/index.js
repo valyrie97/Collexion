@@ -6,13 +6,15 @@ const collexion = new Collexion({
 		Code: PingPong,
 		Data: {
 			start: true,
-			dest: 'B'
+			dest: 'B',
+			name: 'PingPong A'
 		}
 	},
 	B: {
 		Code: PingPong,
 		Data: {
-			dest: 'A'
+			dest: 'A',
+			name: 'PingPong B'
 		}
 	}
 });
