@@ -69,6 +69,7 @@ class Collexion {
 	 * @returns {Instance}
 	 */
 	_createInstance(instTemplate) {
+		if(typeof instTemplate === 'undefined') return;
 		const _class = instTemplate.Code;
 
 		if(typeof _class === 'function') {}
