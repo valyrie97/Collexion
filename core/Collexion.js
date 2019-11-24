@@ -30,6 +30,7 @@ class Collexion {
 				for(const symbol in template) {
 					const instTemplate = template[symbol];
 					const inst = this._createInstance(instTemplate)
+					if(inst === null) continue;
 
 					// construct instances table as we go
 					this._instances[symbol] = inst;
@@ -69,7 +70,7 @@ class Collexion {
 	 * @returns {Instance}
 	 */
 	_createInstance(instTemplate) {
-		if(typeof instTemplate === 'undefined') return;
+		if(typeof instTemplate === 'undefined') return null;
 		const _class = instTemplate.Code;
 
 		if(typeof _class === 'function') {}
