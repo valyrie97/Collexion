@@ -1,1 +1,4 @@
 tests/*
+res
+.travis.yml
+collexion-*.tgz
