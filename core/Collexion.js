@@ -16,7 +16,8 @@
  */
 class Collexion {
 	
-	_instances = {};
+	_namedInstances = {};
+	_instances = [];
 	_semaphores = {};
 
 	constructor(template) {
@@ -33,7 +34,7 @@ class Collexion {
 					if(inst === null) continue;
 
 					// construct instances table as we go
-					this._instances[symbol] = inst;
+					this._namedInstances[symbol] = inst;
 				}
 				res();
 
@@ -42,8 +43,8 @@ class Collexion {
 			this._semaphores.started = this._semaphores.constructed.then(async () => {
 
 				//call start in each instance.
-				for(const symbol in this._instances) {
-					const inst = this._instances[symbol];
+				for(const symbol in this._namedInstances) {
+					const inst = this._namedInstances[symbol];
 					await this._startInstance(inst)
 				}
 			});
@@ -51,8 +52,8 @@ class Collexion {
 			this._semaphores.connected = this._semaphores.started.then(async () => {
 
 				// call connected
-				for(const symbol in this._instances) {
-					const inst = this._instances[symbol];
+				for(const symbol in this._namedInstances) {
+					const inst = this._namedInstances[symbol];
 					await this._connectInstance(inst);
 				}
 			});
@@ -98,7 +99,7 @@ class Collexion {
 			await inst.start();
 
 		// TODO revisit this, and evaluate the usefulness of making this mutable.
-		inst._links = {...this._instances};
+		inst._links = {...this._namedInstances};
 	}
 
 	/**
@@ -107,6 +108,8 @@ class Collexion {
 	 * callback. this is the final step in immersing an instance.
 	 */
 	async _connectInstance(inst) {
+		this._instances.push(inst);
+
 		if('connected' in inst)
 			await inst.connected()
 	}
@@ -131,10 +134,14 @@ class Collexion {
 		}
 	}
 
-	get instances() {
+	get namedInstances() {
 		return {
-			...this._instances
+			...this._namedInstances
 		}
+	}
+
+	get instances() {
+		return this._instances;
 	}
 }
 
