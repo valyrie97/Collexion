@@ -5,7 +5,13 @@ const log = new Signale({
 
 class PingPong {
 
-	connected() {
+	start(data) {
+		this._data = data;
+	}
+
+	connected(links, collexion) {
+		this._links = links;
+		this._collexion = collexion;
 		// if we get passed a string link, its a reference to _links
 		// elsewise, its a direct reference to our destination.
 		// convert it accordingly.
