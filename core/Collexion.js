@@ -18,14 +18,14 @@ class Collexion {
 	
 	_namedInstances = {};
 	_instances = [];
-	_semaphores = {};
+	_linked;
 
 	constructor(template) {
 		(async () => {
 
 			// create a hookable promise chain, so that others may wait for
 			// this collexion to complete from the outside
-			this._semaphores.started = new Promise(async (res) => {
+			this._linked = new Promise(async (res) => {
 
 				// call constructors on objects, and give them their data
 				for(const symbol in template) {
