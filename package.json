@@ -10,7 +10,7 @@
   "scripts": {
     "test": "node tests/pingpong/index.js"
   },
-  "author": "",
+  "author": "Valerie <marcus@valnet.xyz>",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
